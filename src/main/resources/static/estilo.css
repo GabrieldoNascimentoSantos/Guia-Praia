@@ -1,0 +1,20 @@
+*{
+	
+}
+
+.msgerro{
+	background-color: red;
+}
+
+.msgsucesso{
+	background-color: #76FF03;
+}
+
+.alertamensagem{
+	border-radius:10px;
+	padding:10px;
+	margin-left: 50px;
+	color:white;
+	font-size: 18px;
+	font-family: cursive;
+}
