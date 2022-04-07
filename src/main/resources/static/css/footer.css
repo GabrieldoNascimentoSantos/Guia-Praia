@@ -1,0 +1,12 @@
+footer {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    text-align: center;
+}
+.page-footer{
+	background-color: #80DEEA;
+}
+.container{
+	color: black;
+}

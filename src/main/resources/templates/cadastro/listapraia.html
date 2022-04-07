@@ -1,51 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http:thymeleaf.org">
 <head>
+<meta charset="utf-8">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/css/footer.css">
-<link rel="stylesheet" href="/css/cabecalho.css">
-
+	<link rel="stylesheet" href="/css/footer.css">
+	<link rel="stylesheet" href="/css/cabecalho.css">
 <style>
-.pagination{
+	.pagination{
 		position: absolute;
 		top: 85%;
 		left: 45%;
 	}
 </style>
-<title>Beach Guide</title>
+<title>Lista de Praias</title>
 </head>
 <body>
-
-	<header th:replace="fragments/padrao :: cabecalho"></header>
-	
+<header th:replace="fragments/padrao :: navBar"></header>
 	<div class="container">
+
 		<table class="highlight">
 			<thead>
 				<tr>
 					<th>Id</th>
 					<th>Nome</th>
-					<th>E-mail</th>
+					<th>Descrição</th>
+					<th>Palavra Chave</th>
 					<th>Alterar</th>
 					<th>Excluir</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="adm:${admins}">
-					<td th:text="${adm.id}" />
-					<td th:text="${adm.nome}" />
-					<td th:text="${adm.email}" />
-					<td><a th:href="@{/alterarAdmin(id=${adm.id})}"><i
-							class="material-icons prefix" style="color: blue">create</i></a></td>
-					<td><a th:href="@{/excluirAdmin(id=${adm.id})}"><i
+				<tr th:each="praia:${praias}">
+					<td th:text="${praia.id}" />
+					<td th:text="${praia.nome}" />
+					<td th:text="${praia.descricao}" />
+					<td th:text="${praia.palavrasChave}" />
+					<td><a th:href="@{/alterarPraia(id=${praia.id})}">
+					<i class="material-icons prefix" style="color: blue">create</i></a>
+					</td>
+					<td><a th:href="@{/excluirPraia(id=${praia.id})}"><i
 							class="material-icons prefix" style="color: red">close</i></a></td>
+					
 
 				</tr>
 			</tbody>
@@ -69,5 +69,13 @@
 		</ul>
 	</div>
 	<footer th:replace="fragments/padrao :: rodape"></footer>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		console.log("passou aqui");
+		$(".dropdown-trigger").dropdown();
+		});
+</script>
 </body>
 </html>

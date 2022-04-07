@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http:thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>HTML Padrão</title>
+</head>
+<body>
+	<header th:fragment="cabecalho">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo right">Logo</a>
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="sass.html">Sass</a></li>
+					<li><a href="badges.html">Components</a></li>
+					<li><a href="collapsible.html">JavaScript</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+	<header th:fragment="navBar">
+	 <nav>
+    <div class="nav-wrapper">
+      <form action="/procurarPalavraChave">
+        <div class="input-field">
+          <input id="search" type="search" name="palavrasChave" required placeholder="busca por Palavra Chave">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+  </header>
+	
+	<footer th:fragment="rodape" class="page-footer">
+          <div class="footer-copyright">
+            <div class="container">
+            © 2022 Copyright Text
+            </div>
+          </div>
+        </footer>
+</body>
+</html>

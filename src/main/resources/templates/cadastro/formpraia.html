@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http:thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-	<link rel="stylesheet" href="/css/estilo.css">
 	<link rel="stylesheet" href="/css/footer.css">
+	<link rel="stylesheet" href="/css/estilo.css">
 	<link rel="stylesheet" href="/css/cabecalho.css">
-<title>Cadastro De Administrador</title>
+<meta charset="UTF-8">
+<title>Tipos de Praia</title>
 </head>
 <body>
 <header th:replace="fragments/padrao :: cabecalho"></header>
 	<div class="container">
-		<h1>Cadastro de Administrador</h1>
+		<h1>Cadastro Tipos de Praias</h1>
 		<div class="row">
-			<form class="col s12" action="salvarAdministrador" method="post">
-			<input type="hidden" name="id" th:value="${admin?.id}">
+			<form class="col s12" action="salvarPraia" method="post">
+				<input type="hidden" name="id" th:value="${beach?.id}">
 				<div class="row">
 					<div class="input-field col s12">
-						<i class="material-icons prefix" style="color: blue">account_circle</i> <input
-							id="first_name" type="text" class="validate" name="nome" th:value="${admin?.nome}">
-						<label for="first_name">Nome</label>
+						<input id="nomePraia" type="text" class="validate" name="nome" th:value="${beach?.nome}" > 
+						<label for="nomePraia">Tipo de Praia</label>
 					</div>
 				</div>
 		</div>
 
 		<div class="row">
 			<div class="input-field col s6">
-			<i class="material-icons prefix" style="color: blue">markunread</i>
-				<input id="email" type="email" class="validate" name="email" th:value="${admin?.email}">
-				<label for="email">Email</label>
+				<input id="descricao" type="text" class="validate" name="descricao" th:value="${beach?.descricao}" 
+					> <label for="descricao">Descrição</label>
 			</div>
 
 
 
 			<div class="input-field col s6">
-				<i class="material-icons prefix"style="color: blue">lock_outline</i> <input
-					id="password" type="password" class="validate" name="senha">
-				<label for="password">Senha</label>
+				<input id="palavraChave" type="text" class="validate" name="palavrasChave" th:value="${beach?.palavrasChave}">
+				<label for="palavraChave">Palavra Chave</label>
 			</div>
 		</div>
 
@@ -50,10 +47,8 @@
 		</form>
 		<br>
 		<br>
-		
 		<div th:replace="fragments/mensagem">
 		</div>
-		
 	</div>
 	<footer th:replace="fragments/padrao :: rodape"></footer>
 </body>

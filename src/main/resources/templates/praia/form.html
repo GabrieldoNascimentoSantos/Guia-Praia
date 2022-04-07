@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html  xmlns:th="http:thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/formstyle.css">    
+    <title>Formulário</title>
+</head>
+<body>
+  <div class="form">
+    <form method="post" action="praiaSalvar"><br>
+    <input type="hidden" name="id" th:value="${praia?.id}" enctype="multpart/form-data" charset="UTF-8">
+      <h1>Cadastro de Praia</h1><br>
+      <h2>Cadastro</h2><br><br>
+      <label>Nome:</label>
+      <input type="text" size="30" name="nome">
+      <label>Descrição:</label>
+      <input type="text" id="descricao" name="descricao"><br><br>
+      <label>Atração:</label>
+      <input type="text" size="40" name="atracoes">
+      <h2>Endereço</h2><br><br>
+      <label>CEP:</label>
+        <input id="cep" type="text" name="cep" size="25">
+      <label>Estado:</label>
+        <input id="estado" type="text" name="estado" size="25"><br><br>
+        <label >Cidade:</label>
+        <input id="cidade" type="text" name="cidade" size="25">
+        <label>Bairro:</label>
+        <input id="bairro" type="text" name="bairro"><br><br>
+        <label>Rua:</label>
+        <input type="text" size="30" name="endereco">
+        <label>Número:</label>
+        <input id="numero" type="text" size="5" name="numero"><br><br>
+        <div class="input-field col s12">
+        <label>Insira uma Imagem</label>
+        <input type="file" name="fileFotos" multiple accept="image/*"><br><br>
+        </div>
+        <label>Tipo de Praia</label>
+        <select name="tipo.id">
+        <option selected="selected" disabled="disabled">Selecione</option>
+        <option th:each="g: ${tipos}" th:text="${g.nome}" th:value="${g.id}" th:selected="${g.id == praia?.tipo?.id}">
+		</select><br><br>
+        <label>Complemento:</label>
+        <input type="text" size="60"><br><br>
+      <label>
+        <input type="checkbox" name="guardaSol"/>
+        <span>Guarda-sol</span>
+      </label>
+      <label>
+        <input type="checkbox" name="quiosque"/>
+        <span>Quiosque</span>
+      </label><br><br>
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+    <script src="/js/script.js"></script>
+    </body>
+</html>

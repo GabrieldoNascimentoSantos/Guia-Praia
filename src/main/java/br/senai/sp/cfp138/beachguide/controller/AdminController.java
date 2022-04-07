@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.cfp138.beachguide.model.Administrador;
 import br.senai.sp.cfp138.beachguide.repository.AdminRepository;
+import br.senai.sp.cfp138.beachguide.util.HashUtil;
 
 @Controller
 public class AdminController {
@@ -40,10 +41,27 @@ public class AdminController {
 			attr.addFlashAttribute("mensagemErro", "Verifique os campos...");
 		return "redirect:cadAdm";
 		}
+		// verifica se esta sendo feita uma alteração ao invés de uma inserção
+		boolean alteracao = admin.getId() != null ? true : false;
+		// verifica se a senha está vazia
+		if(admin.getSenha().equals(HashUtil.hash256(""))){
+			// se não for alteração, eu defino a primeira parte do email como a senha
+			if(!alteracao) {
+				// extrair a parte do email antes do @
+				String parte = admin.getEmail().substring(0, admin.getEmail().indexOf("@"));
+				// define a senha do admin
+				admin.setSenha(parte);
+			}else {
+				// busca a senha atual
+				String hash = repository.findById(admin.getId()).get().getSenha();
+				// "seta a senha com hash"
+				admin.setSenhaComHash(hash);
+			}
+		}
 		try {
 			//salva o adm
 			repository.save(admin);
-			attr.addFlashAttribute("mensagemSucesso", "Administrador cadastrado com sucesso. ID: "+admin.getId());
+			attr.addFlashAttribute("mensagemSucesso", "Administrador salvo com sucesso. ID: "+admin.getId());
 			return "redirect:cadAdm";
 		} catch (Exception e) {
 			attr.addFlashAttribute("mensagemErro", "Houve um erro ao cadastrar o Administrador: " +e.getMessage());
@@ -86,6 +104,10 @@ public class AdminController {
 		Administrador admin = repository.findById(id).get();
 		model.addAttribute("admin", admin);
 		return "forward:cadAdm";
+	}
+	@RequestMapping("/")
+	public String index() {
+		return "parallax-template/index";
 	}
 	
 	

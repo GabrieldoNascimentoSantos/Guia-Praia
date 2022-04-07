@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import com.google.common.hash.Hashing;
 
 public class HashUtil {
-	public static String hast256(String palavra) {
+	public static String hash256(String palavra) {
 		// tempero para o hash
 		String salt = "b@n@n@";
 		// acrescenta o tempero
