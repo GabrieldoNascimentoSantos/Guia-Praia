@@ -17,6 +17,8 @@ cep.addEventListener("blur",() => {
 			document.getElementById("endereco").value = data.logradouro;
 			
 			
+			
+			
 		})
 	})
 })

@@ -47,7 +47,7 @@ public class BeachController {
 	return "redirect:cadPraia";
 	}
 	
-	@RequestMapping("listarPraias/{page}")
+	@RequestMapping("listarTipoPraias/{page}")
 	public String listar(Model model, @PathVariable("page") int page) {
 		PageRequest pageable = PageRequest.of(page-1, 7, Sort.by(Sort.Direction.ASC, "nome")); 
 		Page<TipoPraia> paginas = repository.findAll(pageable);

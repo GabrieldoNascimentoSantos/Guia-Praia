@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stylelogin.css">
+    <link rel="stylesheet" href="/css/cabecalho.css">
+    <title>Tela de login</title>
+</head>
+<body>
+	<header th:replace="fragments/padrao :: cabecalhoLogin"></header>
+    	<form action="telaLogin" method="post">
+    	<div>
+       		<h1>Login</h1>
+        	<input type="email" placeholder="E-mail" name="email" required>
+        	<br><br>
+        	<input type="password" placeholder="Senha" name="senha" required>
+        	<br><br>
+        	<button type="submit">Entrar</button>
+    	</div>
+    	</form>
+    	<div th:replace="fragments/mensagem"></div>
+</body>
+</html>

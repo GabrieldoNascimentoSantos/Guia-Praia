@@ -5,7 +5,7 @@ footer {
     text-align: center;
 }
 .page-footer{
-	background-color: #80DEEA;
+	background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
 }
 .container{
 	color: black;

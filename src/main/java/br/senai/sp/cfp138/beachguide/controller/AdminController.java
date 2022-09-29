@@ -3,6 +3,7 @@ package br.senai.sp.cfp138.beachguide.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +100,30 @@ public class AdminController {
 		return "redirect:listarAdmin/1";
 	}
 	
+	@RequestMapping("logout")
+	public String logou(HttpSession session) {
+		// elimina o usuario da session
+		session.invalidate();
+		// retorna para a página inicial
+		return "redirect:/";
+	}
+	
+	@RequestMapping("telaLogin")
+	public String login(Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+		// buscar o administrador do BD, através do email e senha
+		Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
+		// verifica se existe o admin
+		if (admin == null) {
+			// se for nulo, avisa ao usuário
+			attr.addFlashAttribute("mensagemErro", "Login e/ou senha inválido(s)");
+			return "redirect:/";
+		}else {
+			// se não for nulo, salva na sessão e acessa o sistema
+			session.setAttribute("usuarioLogado", admin);
+			return "redirect:listarAdmin/1";
+		}
+	}
+	
 	@RequestMapping("alterarAdmin")
 	public String alterar(Long id, Model model) {
 		Administrador admin = repository.findById(id).get();
@@ -107,7 +132,7 @@ public class AdminController {
 	}
 	@RequestMapping("/")
 	public String index() {
-		return "parallax-template/index";
+		return "index/index";
 	}
 	
 	
